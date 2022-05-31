@@ -82,8 +82,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to BabyBlog!</h1>
 	
 	<div id="body">
-		<?php echo $post['title'] ?><br>
-		<?php echo $post['content'] ?><br>
+		<?= $post['title'] ?><br>
+		<?= $post['content'] ?><br>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

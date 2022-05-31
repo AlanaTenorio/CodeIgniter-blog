@@ -79,15 +79,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo site_url('/') ?>">BabyBlog Homepage</a></h1>
+	<h1><a href="<?= site_url('/') ?>">BabyBlog Homepage</a></h1>
 	
 	<div id="body">
+		<?= $this->session->flashdata('message'); ?>
+
 		<div>
-			<a href="<?php echo site_url('posts/create') ?>"><button>New Post</button></a>
+			<a href="<?= site_url('posts/create') ?>"><button>New Post</button></a>
 		</div>
 		<br>
 		<?php foreach($posts as $post): ?>
-			<?php echo $post['title'] ?> <a href="<?php echo site_url('posts/get/'.$post['id']) ?>"> [Visualizar]</a><br>
+			<?= $post['title'] ?>
+			<a href="<?= site_url('posts/show/'.$post['id']) ?>"> [Visualizar]</a><br>
 		<?php endforeach; ?>
 	</div>
 
