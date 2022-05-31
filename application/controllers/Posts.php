@@ -35,7 +35,7 @@ class Posts extends CI_Controller {
 	}
 
 	public function show($id) {
-		$data['post'] = $this->Post->get($id)[0];
+		$data['post'] = $this->Post->get($id);
 		$this->load->view('posts_show', $data);
 	}
 }

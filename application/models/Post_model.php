@@ -19,7 +19,7 @@ class Post_model extends CI_Model {
     }
 
     public function get($id) {
-        $query = $this->db->query("SELECT * FROM posts WHERE id = ?", [$id]);
-        return $query->result_array();
+        $this->db->where('id', $id);
+        return $this->db->get('posts')->row_array();
     }
 }
