@@ -87,7 +87,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		</div>
 		<br>
 		<?php foreach($posts as $post): ?>
-			<?php echo $post['title'] ?> <a href="<?php echo site_url('posts/get/'.$post['id']) ?>"> [Visualizar]</a><br>
+			<?php echo $post['title'] ?>
+			<a href="<?php echo site_url('posts/show/'.$post['id']) ?>"> [Visualizar]</a><br>
 		<?php endforeach; ?>
 	</div>
 
