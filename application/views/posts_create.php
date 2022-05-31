@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <body>
 
 <div id="container">
-	<h1><a href="<?php echo site_url('/') ?>">BabyBlog Homepage</a></h1>
+	<h1><a href="<?= site_url('/') ?>">BabyBlog Homepage</a></h1>
 	
 	<div id="body">
 		<?php echo validation_errors(); ?>

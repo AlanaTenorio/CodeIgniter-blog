@@ -83,12 +83,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	<div id="body">
 		<div>
-			<a href="<?php echo site_url('dashboard') ?>"><button>Dashboard</button></a>
+			<a href="<?= site_url('dashboard') ?>"><button>Dashboard</button></a>
 		</div>
 		<br>
 
 		<?php foreach($posts as $post): ?>
-			☺ <?php echo $post['title'] ?><br>
+			☺ <?= $post['title'] ?><br>
 		<?php endforeach; ?>
 	</div>
 
