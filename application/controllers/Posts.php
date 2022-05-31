@@ -5,6 +5,7 @@ class Posts extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
+		$this->load->library('session');
 		$this->load->model('Post_model', 'Post');
 	}
 
@@ -15,22 +16,21 @@ class Posts extends CI_Controller {
 
 	public function create() {
 		$this->load->helper('form');
+
+		$this->load->view('posts_create');
+	}
+
+	public function store() {
 		$this->load->library('form_validation');
 
 		$this->form_validation->set_rules('title', 'Title', 'required');
     	$this->form_validation->set_rules('content', 'Content', 'required');
 
-		if($this->form_validation->run() === FALSE) {
-			$this->load->view('posts_create');
+		if ($this->form_validation->run() === TRUE && $this->Post->store()) {
+			$this->session->set_flashdata('message', 'Stored with success!');
+			redirect('posts');
 		} else {
-			if($this->Post->store()) {
-				$view_data = array(
-					'message' => 'Success'
-				);
-				redirect('posts', $view_data);
-			} else {
-				echo "Not saved";
-			}
+			$this->create();
 		}
 	}
 

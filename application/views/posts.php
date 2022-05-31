@@ -82,6 +82,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1><a href="<?= site_url('/') ?>">BabyBlog Homepage</a></h1>
 	
 	<div id="body">
+		<?= $this->session->flashdata('message'); ?>
+
 		<div>
 			<a href="<?= site_url('posts/create') ?>"><button>New Post</button></a>
 		</div>

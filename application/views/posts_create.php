@@ -83,7 +83,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	
 	<div id="body">
 		<?php echo validation_errors(); ?>
-		<?php echo form_open('posts/create'); ?>
+		<?php echo form_open('posts/store'); ?>
 			<div>
 				<label for="title">Title</label>
 				<?php echo form_input('title'); ?>
