@@ -5,7 +5,9 @@ class Posts extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->library('session');
+		if ($this->session->userdata('user') == null) {
+			redirect('auth/login');
+		}
 		$this->load->model('Post_model', 'Post');
 	}
 
