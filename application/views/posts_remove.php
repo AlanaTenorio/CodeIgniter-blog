@@ -82,18 +82,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1><a href="<?= site_url('/') ?>">BabyBlog Homepage</a></h1>
 	
 	<div id="body">
-		<?= $this->session->flashdata('message'); ?>
-
-		<div>
-			<a href="<?= site_url('posts/create') ?>"><button>New Post</button></a>
-		</div>
-		<br>
-		<?php foreach($posts as $post): ?>
-			<?= $post['title'] ?>
-			<a href="<?= site_url('posts/show/'.$post['id']) ?>"> [Show]</a>
-			<a href="<?= site_url('posts/edit/'.$post['id']) ?>"> [Edit]</a>
-			<a href="<?= site_url('posts/remove/'.$post['id']) ?>"> [Remove]</a><br>
-		<?php endforeach; ?>
+		<?php echo validation_errors(); ?>
+		<?php echo form_open('posts/delete', '', array('post_id' => $post['id'])); ?>
+			<p>
+				<strong>Title:</strong> 
+				<?= $post['title'] ?>
+			</p>
+			<p>
+				<strong>Content:</strong> 
+				<?= $post['content'] ?>
+			</p>
+			<p>
+				<strong>Created:</strong> 
+				<?= bb_format_timestamp($post['created_at']) ?>
+			</p>
+			<p>
+				<strong>Last change:</strong> 
+				<?= bb_format_timestamp($post['updated_at']) ?>
+			</p>
+			<?php echo form_submit('delete', 'Remove'); ?>
+		<?php echo form_close(); ?>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

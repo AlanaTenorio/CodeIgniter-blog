@@ -82,18 +82,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1><a href="<?= site_url('/') ?>">BabyBlog Homepage</a></h1>
 	
 	<div id="body">
-		<?= $this->session->flashdata('message'); ?>
-
-		<div>
-			<a href="<?= site_url('posts/create') ?>"><button>New Post</button></a>
-		</div>
-		<br>
-		<?php foreach($posts as $post): ?>
-			<?= $post['title'] ?>
-			<a href="<?= site_url('posts/show/'.$post['id']) ?>"> [Show]</a>
-			<a href="<?= site_url('posts/edit/'.$post['id']) ?>"> [Edit]</a>
-			<a href="<?= site_url('posts/remove/'.$post['id']) ?>"> [Remove]</a><br>
-		<?php endforeach; ?>
+		<?php echo validation_errors(); ?>
+		<?php echo form_open('posts/update', '', array('post_id' => $post['id'])); ?>
+			<div>
+				<label for="title">Title</label>
+				<?php echo form_input('title', $post['title']); ?>
+			</div>
+			<div>
+				<label for="content">Content</label>
+				<?php echo form_input('content', $post['content']); ?>
+			</div>
+			<?php echo form_submit('update', 'Save changes'); ?>
+		<?php echo form_close(); ?>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

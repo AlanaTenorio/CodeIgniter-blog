@@ -82,8 +82,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<h1>Welcome to BabyBlog!</h1>
 	
 	<div id="body">
-		<?= $post['title'] ?><br>
-		<?= $post['content'] ?><br>
+		<p>
+			<strong>Title:</strong> 
+			<?= $post['title'] ?>
+		</p>
+		<p>
+			<strong>Content:</strong> 
+			<?= $post['content'] ?>
+		</p>
+		<p>
+			<strong>Created:</strong> 
+			<?= bb_format_timestamp($post['created_at']) ?>
+		</p>
+		<p>
+			<strong>Last change:</strong> 
+			<?= bb_format_timestamp($post['updated_at']) ?>
+		</p>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>

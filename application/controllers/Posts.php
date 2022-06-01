@@ -38,4 +38,39 @@ class Posts extends CI_Controller {
 		$data['post'] = $this->Post->get($id);
 		$this->load->view('posts_show', $data);
 	}
+
+	public function edit($id) {
+		$data['post'] = $this->Post->get($id);
+		$this->load->helper('form');
+		$this->load->view('posts_edit', $data);
+	}
+
+	public function update() {
+		$this->load->library('form_validation');
+
+		$this->form_validation->set_rules('title', 'Title', 'required');
+    	$this->form_validation->set_rules('content', 'Content', 'required');
+
+		if ($this->form_validation->run() === TRUE && $this->Post->update()) {
+			$this->session->set_flashdata('message', 'Updated with success!');
+			redirect('posts/show/'.$this->input->post('post_id'));
+		} else {
+			$this->edit();
+		}
+	}
+
+	public function remove($id) {
+		$data['post'] = $this->Post->get($id);
+		$this->load->helper('form');
+		$this->load->view('posts_remove', $data);
+	}
+
+	public function delete() {
+		if ($this->Post->delete()) {
+			$this->session->set_flashdata('message', 'Removed with success!');
+			redirect('posts');
+		} else {
+			$this->remove($this->input->post('post_id'));
+		}
+	}
 }
